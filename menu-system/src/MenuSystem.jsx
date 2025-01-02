@@ -55,7 +55,6 @@ function MenuSystem(){
                 <option value = "Fries">Fries</option>
                 <option value = "Palabok">Palabok</option>
                 <option value = "Spaghetti">Spaghetti</option>
-                <option value = "">None</option>
             </select>
 
             <p>Drinks: {drinks}</p>
@@ -74,7 +73,6 @@ function MenuSystem(){
                 <option value = "Royal">Royal</option>
                 <option value = "Soda Float">Soda Float</option>
                 <option value = "Sprite">Sprite</option>
-                <option value = "">None</option>
             </select>
 
             <p>Desserts: {desserts}</p>
