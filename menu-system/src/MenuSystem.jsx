@@ -14,7 +14,10 @@ function MenuSystem(){
                             orderedDesserts: desserts};
 
         setOrders(o => [...o, newOrder]);
-        setMainCourse("")
+
+        setMainCourse("");
+        setDrinks("");
+        setDesserts("");
     }
 
     function handleRemoveOrder(index){
@@ -39,7 +42,7 @@ function MenuSystem(){
             <ul>
                 {orders.map((order, index) => 
                 <li key = {index} onClick = {() => handleRemoveOrder(index)}>
-                    {order.orderedMainCourse}
+                    {order.orderedMainCourse} {order.orderedDrinks} {order.orderedDesserts}
                 </li>)}
             </ul>
             <p>Main Courses: {mainCourse}</p>
@@ -54,7 +57,6 @@ function MenuSystem(){
                 <option value = "Spaghetti">Spaghetti</option>
                 <option value = "">None</option>
             </select>
-            <button onClick = {handleAddOrder}>Add Order</button>
 
             <p>Drinks: {drinks}</p>
             <select value = {drinks} onChange = {handleDrinksChange}>
@@ -74,7 +76,6 @@ function MenuSystem(){
                 <option value = "Sprite">Sprite</option>
                 <option value = "">None</option>
             </select>
-            <button onClick = {handleAddOrder}>Add Order</button>
 
             <p>Desserts: {desserts}</p>
             <select value = {desserts} onChange = {handleDessertsChange}>
@@ -84,7 +85,7 @@ function MenuSystem(){
                 <option value = "Mini Chocolate Sundae">Mini Chocolate Sundae</option>
                 <option value = "Peach Mango Pie">Peach Mango Pie</option>
                 <option value = "Tuna Pie">Tuna Pie</option>
-            </select>
+            </select> <br></br> <br></br>
             <button onClick = {handleAddOrder}>Add Order</button>
         </div>
     </>);
