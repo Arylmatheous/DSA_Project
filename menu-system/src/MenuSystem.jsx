@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 function MenuSystem(){
 
-    const [orders, setOrders] = useState(["ChickenJoy", "Burger", "Coke"]);
+    const [orders, setOrders] = useState([]);
     const [newOrders, setNewOrders] = useState("");
 
     //this allow you to type a text in the input element
