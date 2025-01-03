@@ -1,92 +1,141 @@
 import React, {useState} from 'react';
 
 function MenuSystem(){
+
+    const [orders, setOrders] = useState(["ChickenJoy", "Burger", "Coke"]);
+    const [newOrders, setNewOrders] = useState("");
+
+    //this allow you to type a text in the input element
+    function handleInputOrderChange(event){
+        setNewOrders(event.target.value);
+    }
+    //Checks if the inputted order is in the menu
+    function isValidOrder(order) {
+        const validOrders = [
+            "Burger Steak",
+            "Chocolate Sundae",
+            "Coke",
+            "ChickenJoy",
+            "Cookies & Cream Sundae",
+            "Coke Float",
+            "Fries",
+            "Mini Chocolate Sundae",
+            "Iced Latte",
+            "Jolly Spaghetti",
+            "Peach Mango Pie",
+            "Iced Tea",
+            "Yumburger",
+            "Tuna Pie",
+            "Pineapple Juice"
+        ];
+        return validOrders.includes(order.trim());
+    }
     
-    const [orders, setOrders] = useState([]);
-    const [mainCourse, setMainCourse] = useState("");
-    const [drinks, setDrinks] = useState("");
-    const [desserts, setDesserts] = useState("");
+    //the if statement prevent from adding blank orders
+    function addOrder() {
+        if (newOrders.trim() !== "" && isValidOrder(newOrders)) {
+            setOrders(o => [...o, newOrders]);
+            setNewOrders("");
+        } else if (newOrders.trim() !== "") {
+            alert("Invalid order. Please select an item from the menu.");
+        }
+    }    
 
-    function handleAddOrder(){
+    function deleteOrder(index){
 
-        const newOrder = {  orderedMainCourse: mainCourse,
-                            orderedDrinks: drinks,
-                            orderedDesserts: desserts};
-
-        setOrders(o => [...o, newOrder]);
-
-        setMainCourse("");
-        setDrinks("");
-        setDesserts("");
+        const updatedOrders = orders.filter((_, i) => i !== index);
+        setOrders(updatedOrders);
     }
 
-    function handleRemoveOrder(index){
-        setOrders(o => o.filter((_, i) => i !== index));
-    }
+    return(
+    <div className = "menu-system">
 
-    function handleMainCourseChange(event){
-        setMainCourse(event.target.value);
-    }
+        <h1>Welcome to Jollibee!</h1>
 
-    function handleDrinksChange(event){
-        setDrinks(event.target.value);
-    }
+        <table>
+            <thead>
+                <th>Main Courses</th>
+                <th>Price</th>
+                <th>Desserts</th>
+                <th>Price</th>
+                <th>Drinks</th>
+                <th>Price</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Burger Steak</td>
+                    <td>₱60.00</td>
+                    <td>Chocolate Sundae</td>
+                    <td>₱52.00</td>
+                    <td>Coke</td>
+                    <td>₱61.00</td> 
+                </tr>
+                <tr>
+                    <td>ChickenJoy</td>
+                    <td>₱82.00</td>
+                    <td>Cookies & Cream Sundae</td>
+                    <td>₱59.00</td>
+                    <td>Coke Float</td>
+                    <td>₱59.00</td>
+                </tr>
+                <tr>
+                    <td>Fries</td>
+                    <td>₱47.00</td>
+                    <td>Mini Chocolate Sundae</td>
+                    <td>₱27.00</td>
+                    <td>Iced Latte</td>
+                    <td>₱59.00</td> 
+                </tr>
+                <tr>
+                    <td>Jolly Spaghetti</td>
+                    <td>₱69.00</td> 
+                    <td>Peach Mango Pie</td>
+                    <td>₱43.00</td> 
+                    <td>Iced Tea</td>
+                    <td>₱66.00</td> 
+                </tr>
+                <tr>
+                    <td>Yumburger</td>
+                    <td>₱40.00</td> 
+                    <td>Tuna Pie</td>
+                    <td>₱53.00</td> 
+                    <td>Pineapple Juice</td>
+                    <td>₱66.00</td> 
+                </tr>
+            </tbody>
+        </table>
 
-    function handleDessertsChange(event){
-        setDesserts(event.target.value);
-    }
-
-    return(<>
         <div>
-            <h2>List of Orders</h2>
-            <ul>
-                {orders.map((order, index) => 
-                <li key = {index} onClick = {() => handleRemoveOrder(index)}>
-                    {order.orderedMainCourse} {order.orderedDrinks} {order.orderedDesserts}
-                </li>)}
-            </ul>
-            <p>Main Courses: {mainCourse}</p>
-            <select value = {mainCourse} onChange = {handleMainCourseChange}>
-                <option value = "">Select your main course</option>
-                <option value = "6 pcs Chicken Nuggets">6 pcs Chicken Nuggets</option>
-                <option value = "Burger">Burger</option>
-                <option value = "Burger Steak">Burger Steak</option>
-                <option value = "ChickenJoy">ChickenJoy</option>
-                <option value = "Fries">Fries</option>
-                <option value = "Palabok">Palabok</option>
-                <option value = "Spaghetti">Spaghetti</option>
-            </select>
+            <br></br>
+            <input 
+                type = "text" 
+                placeholder = "Enter your order" 
+                value = {newOrders} 
+                onChange = {handleInputOrderChange}>
+            </input>
+            <button 
+                className = "add-order-button"
+                onClick = {addOrder}>
+                Add Order
+            </button>
 
-            <p>Drinks: {drinks}</p>
-            <select value = {drinks} onChange = {handleDrinksChange}>
-                <option value = "">Select your drinks</option>
-                <option value = "Coke">Coke</option>
-                <option value = "Coke Zero">Coke Zero</option>
-                <option value = "Hot Chocolate">Hot Chocolate</option>
-                <option value = "Hot Fresh Brew">Hot Fresh Brew</option>
-                <option value = "Iced Latte">Iced Latte</option>
-                <option value = "Iced Mocha">Iced Mocha</option>
-                <option value = "Iced Mocha Float">Iced Mocha Float</option>
-                <option value = "Iced Tea">Iced Tea</option>
-                <option value = "Minute Maid">Minute Maid</option>
-                <option value = "Pineapple Juice">Pineapple Juice</option>
-                <option value = "Royal">Royal</option>
-                <option value = "Soda Float">Soda Float</option>
-                <option value = "Sprite">Sprite</option>
-            </select>
-
-            <p>Desserts: {desserts}</p>
-            <select value = {desserts} onChange = {handleDessertsChange}>
-                <option value = "">Select your desserts</option>
-                <option value = "Chocolate Sundae">Chocolate Sundae</option>
-                <option value = "Cookies & Cream Sundae">Cookies & Cream Sundae</option>
-                <option value = "Mini Chocolate Sundae">Mini Chocolate Sundae</option>
-                <option value = "Peach Mango Pie">Peach Mango Pie</option>
-                <option value = "Tuna Pie">Tuna Pie</option>
-            </select> <br></br> <br></br>
-            <button onClick = {handleAddOrder}>Add Order</button>
+            <h2>Your Orders: </h2>
         </div>
-    </>);
+
+        <ol>
+            {orders.map((order, index) =>
+            <li key = {index}>
+                <span className = "text">{order}</span>
+                <button 
+                    className = "delete-order-button"
+                    onClick = {() => deleteOrder(index)}>
+                    Delete Order
+                </button>
+            </li>
+             )}
+        </ol>
+
+    </div>)
 }
 
 export default MenuSystem
