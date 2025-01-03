@@ -6,7 +6,7 @@ function App() {
     <>
     <MenuSystem></MenuSystem>
     </>
-  )
+  );
 }
 
 export default App

@@ -1,0 +1,22 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid hsl(0, 0%, 85%);
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: hsl(0, 100%, 45%);
+    color: hsl(0, 100%, 100%);
+}
+
+tr:nth-child(even) {
+    background-color: hsl(0, 0%, 98%);
+}
+tr:hover {
+    background-color: hsl(0, 0%, 95%);
+}
