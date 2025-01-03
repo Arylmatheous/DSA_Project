@@ -30,6 +30,28 @@ function MenuSystem(){
         ];
         return validOrders.includes(order.trim());
     }
+
+    function calculateTotal() {
+        const priceList = {
+            "Burger Steak": 60,
+            "Chocolate Sundae": 52,
+            "Coke": 61,
+            "ChickenJoy": 82,
+            "Cookies & Cream Sundae": 59,
+            "Coke Float": 59,
+            "Fries": 47,
+            "Mini Chocolate Sundae": 27,
+            "Iced Latte": 59,
+            "Jolly Spaghetti": 69,
+            "Peach Mango Pie": 43,
+            "Iced Tea": 66,
+            "Yumburger": 40,
+            "Tuna Pie": 53,
+            "Pineapple Juice": 66
+        };
+    
+        return orders.reduce((total, order) => total + (priceList[order] || 0), 0);
+    }    
     
     //the if statement prevent from adding blank orders
     function addOrder() {
@@ -135,6 +157,7 @@ function MenuSystem(){
              )}
         </ol>
 
+        <h2>Total Amount: ₱{calculateTotal()}.00</h2>
     </div>)
 }
 
