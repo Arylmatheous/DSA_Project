@@ -5,6 +5,8 @@ function MenuSystem(){
     const [orders, setOrders] = useState([]);
     const [newOrders, setNewOrders] = useState("");
 
+    document.title = "Menu System";
+
     //this allow you to type a text in the input element
     function handleInputOrderChange(event){
         setNewOrders(event.target.value);
