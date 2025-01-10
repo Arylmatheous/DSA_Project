@@ -71,6 +71,10 @@ function MenuSystem(){
         setOrders(updatedOrders);
     }
 
+    function handleFinishOrder(){
+        setOrders([]);
+    }
+
     return(
     <div className = "menu-system">
 
@@ -160,6 +164,13 @@ function MenuSystem(){
         </ol>
 
         <h2>Total Amount: ₱{calculateTotal()}.00</h2>
+
+
+        <button
+            className = "confirm-button"
+            onClick = {handleFinishOrder}>
+            Confirm Order
+        </button>
     </div>)
 }
 

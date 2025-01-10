@@ -76,6 +76,21 @@ input[type="text"] {
     background-color: #c4171b;
 }
 
+.confirm-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #e31b23;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.confirm-button:hover {
+    background-color: #c4171b;
+}
+
 .delete-order-button {
     padding: 5px 10px;
     font-size: 14px;
