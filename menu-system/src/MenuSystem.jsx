@@ -79,36 +79,82 @@ function MenuSystem(){
         setOrders(updatedOrders);
     }
 
+    // async function submitOrder(){
+    //     if (orders.length === 0){
+    //         alert("Please add at least one item to your order.");
+    //         return;
+    //     }
+
+    //     const orderData = {
+    //         orders,
+    //         totalAmount: calculateTotal(),
+    //     };
+
+    //     try {
+    //         console.log("Sending order data:", orderData);
+
+    //         const response = await fetch("https://salandananapi.azurewebsites.net/AddOrder", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Accept": "application/json"
+    //             },
+    //             body: JSON.stringify(orderData),
+    //         });
+
+    //         console.log("Response status:", response.status);
+    
+    //         if (response.ok){
+    //             const result = await response.json();
+    //             console.log("Success response:", result);
+    //             alert("Order submitted successfully!");
+    //             setOrders([]);
+    //             setOrderType(null);
+    //         } else {
+    //             const errorData = await response.json().catch(() => null);
+    //             console.error("Error response:", {
+    //                 status: response.status,
+    //                 statusText: response.statusText,
+    //                 data: errorData
+    //             });
+    //             alert(`Failed to submit the order: ${errorData?.message || response.statusText}`);
+    //         }
+    //     } catch (error){
+    //         console.error("Error submitting order:", error);
+    //         alert("An error occurred while submitting your order.");
+    //     }
+    // }
+
     async function submitOrder(){
         const orderData = {
-            orderType,
             orders,
-            total: calculateTotal(),
+            totalAmount: calculateTotal(),
         };
 
         try {
-            const response = await fetch("https://salandananapi.azurewebsites.net/AddOrder", {
+            const response = await fetch("salandananapi.azurewebsites.net/AddOrder", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(orderData),
             });
-    
-            if (response.ok){
+
+            if(response.ok){
                 const result = await response.json();
                 alert("Order submitted successfully!");
-                console.log("API Response:", result)
+                console.log("API Response:", result);
+                console.log("Order submission was successful");
                 setOrders([]);
                 setOrderType(null);
             } else {
-                alert("Failed to submit the order. Please try again.");
-                console.error("API Error", response.status, response.statusText);
+                alert("Failed to submit your order. Please try again.");
+                console.error("API Error", response.statusText);
             }
         } catch (error){
-            console.error("Error submitting order:", error);
-            alert("An error occurred while submitting your order.");
-        }
+            alert("An error occured while submitting the form.");
+            console.error("error", error);
+        }     
     }
 
     return(
