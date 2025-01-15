@@ -132,7 +132,7 @@ function MenuSystem(){
         };
 
         try {
-            const response = await fetch("salandananapi.azurewebsites.net/AddOrder", {
+            const response = await fetch("https://salandananapi.azurewebsites.net/AddOrder", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
