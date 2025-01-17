@@ -79,52 +79,6 @@ function MenuSystem(){
         setOrders(updatedOrders);
     }
 
-    // async function submitOrder(){
-    //     if (orders.length === 0){
-    //         alert("Please add at least one item to your order.");
-    //         return;
-    //     }
-
-    //     const orderData = {
-    //         orders,
-    //         totalAmount: calculateTotal(),
-    //     };
-
-    //     try {
-    //         console.log("Sending order data:", orderData);
-
-    //         const response = await fetch("https://salandananapi.azurewebsites.net/AddOrder", {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Accept": "application/json"
-    //             },
-    //             body: JSON.stringify(orderData),
-    //         });
-
-    //         console.log("Response status:", response.status);
-    
-    //         if (response.ok){
-    //             const result = await response.json();
-    //             console.log("Success response:", result);
-    //             alert("Order submitted successfully!");
-    //             setOrders([]);
-    //             setOrderType(null);
-    //         } else {
-    //             const errorData = await response.json().catch(() => null);
-    //             console.error("Error response:", {
-    //                 status: response.status,
-    //                 statusText: response.statusText,
-    //                 data: errorData
-    //             });
-    //             alert(`Failed to submit the order: ${errorData?.message || response.statusText}`);
-    //         }
-    //     } catch (error){
-    //         console.error("Error submitting order:", error);
-    //         alert("An error occurred while submitting your order.");
-    //     }
-    // }
-
     async function submitOrder(){
         const orderData = {
             orders,
