@@ -132,7 +132,7 @@ body{
     margin-top: 20px;
   }
   
-  .start-order-button {
+  .dine-in-button {
     padding: 5px 10px;
     font-size: 20px;
     background-color: #fdbf00;
@@ -143,11 +143,17 @@ body{
     margin-left: 10px;
   }
   
-  .start-order-button:hover {
+  .dine-in-button img {
+    width: 250px;   
+    height: 150px;  
+    margin: 10px;  
+  }
+  
+  .dine-in-button:hover {
     background-color: #fdbe00b2;
   }
   
-  /* .take-out-button {
+  .take-out-button {
     padding: 5px 10px;
     font-size: 20px;
     background-color: #fdbf00;
@@ -166,4 +172,4 @@ body{
   
   .take-out-button:hover {
     background-color: #fdbe00b2;
-  } */
+  }
