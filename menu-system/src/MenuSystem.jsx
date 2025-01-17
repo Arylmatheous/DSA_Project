@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import dineIn from './assets/dine_in.png';
+// import dineIn from './assets/dine_in.png';
 // import takeOut from './assets/takeout.png';
-
 
 function MenuSystem(){
 
