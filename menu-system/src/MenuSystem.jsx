@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import dineIn from './assets/dine_in.png';
-import takeOut from './assets/takeout.png';
+// import takeOut from './assets/takeout.png';
 
 
 function MenuSystem(){
 
     const [orders, setOrders] = useState([]);
     const [newOrders, setNewOrders] = useState("");
-    const [orderType, setOrderType] = useState(null);
+    const [startOrder, setStartOrder] = useState(null);
 
     document.title = "Menu System";
 
-    function handleOrderType(type){
-        setOrderType(type);
+    function handleStartOrder(start){
+        setStartOrder(start);
     }
 
     //this allow you to type a text in the input element
@@ -160,20 +160,20 @@ function MenuSystem(){
     return(
     <div className = "menu-system">
 
-        {!orderType ? (
+        {!startOrder ? (
             <div>
                 <h1>Welcome to Jollibee!</h1>
-                <p>Please select your order type:</p>
-                <button className = "dine-in-button" onClick = {() => handleOrderType("Dine-In")}>
+                {/* <p>Please select your order type:</p> */}
+                <button className = "start-order-button" onClick = {() => handleStartOrder("Start Order")}>
                     <img src={dineIn}></img>
                     <br></br>
-                    Dine-In
+                    Start Order
                 </button>
-                <button className = "take-out-button"onClick = {() => handleOrderType("Take-Out")}>
+                {/* <button className = "take-out-button"onClick = {() => handleOrderType("Take-Out")}>
                     <img src={takeOut}></img>
                     <br></br>
                     Take-Out
-                </button>
+                </button> */}
             </div>  
         ) : ( 
             <div>
